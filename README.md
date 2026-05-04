@@ -1,6 +1,6 @@
 # Mini Oracle MCP Server
 
-Model Context Protocol (MCP) server untuk koneksi ke database Oracle. Memungkinkan AI assistant untuk berinteraksi dengan database Oracle melalui berbagai tools.
+Model Context Protocol (MCP) server untuk koneksi ke database Oracle. Server ini hanya menyediakan tool `query`.
 
 ## Prerequisites
 
@@ -54,58 +54,13 @@ LD_LIBRARY_PATH=/usr/lib/oracle/21/client64/lib
 
 | Tool | Deskripsi |
 |------|-----------|
-| `list_tables` | List semua tabel dalam schema |
-| `list_views` | List semua views dalam schema (support filter nama) |
-| `describe_table` | Lihat struktur kolom tabel/view |
-| `get_view_source` | Lihat source code SQL dari sebuah view |
-| `query` | Jalankan SQL query (max 50 rows) |
-| `list_procedures` | List stored procedures (support filter nama) |
-| `list_functions` | List functions (support filter nama) |
-| `list_packages` | List packages (support filter nama) |
-| `get_procedure_source` | Lihat source code stored procedure |
-| `get_function_source` | Lihat source code function |
-| `get_package_source` | Lihat source code package (spec & body) |
+| `query` | Jalankan SQL query (max 150 rows) |
 
 ## Contoh Penggunaan
-
-### List Semua Tabel
-```
-list_tables
-```
-
-### List Views dengan Filter
-```
-list_views(name: "V_%")
-```
-
-### Describe Tabel
-```
-describe_table(table: "M_RBI_BILLING")
-```
 
 ### Jalankan Query
 ```
 query(sql: "SELECT * FROM M_ACCOUNT WHERE STATUS = 'ACTIVE'")
-```
-
-### List Packages
-```
-list_packages(name: "PACK_%")
-```
-
-### Lihat Source Package
-```
-get_package_source(package: "PACK_EFAKTUR")
-```
-
-### List Procedures
-```
-list_procedures(name: "%EFAKTUR%")
-```
-
-### Lihat Source Procedure
-```
-get_procedure_source(procedure: "SAVE_EINVOICE")
 ```
 
 ## Konfigurasi di Claude Desktop
